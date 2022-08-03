@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <div v-show="showModal">
+    <Modal theme="sale" @close="toggleModal">
+      <h1>This is the title</h1>
+      <p>This is the content of the card</p>
+    </Modal>
+  </div>
+  <button @click="toggleModal">Show Modal</button>
+</div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Modal
+  },
+  data() {
+    return {
+      header: "Prop down to child",
+      text: "This is content passed prop",
+      showModal: false
+    }
+  },
+  methods: {
+    toggleModal() {
+      this.showModal = !this.showModal
+    }
   }
 }
 </script>
